@@ -8,9 +8,9 @@ set -e # Halts the program if error occurs (i.e., not getting sudo permission)
 # Gets the 'Boot____*' value of this line.
 # Extracts the 4-digit number from this value.
 # If unsuccessful, the variable is set to -1.
-WINDOWS_BOOT_NUMBER=`efibootmgr | grep -i Windows | grep -Eo "Boot(.*?\*)" | grep -Eo "[0-9]{4}" || echo -1`
+WINDOWS_BOOT=`efibootmgr | grep -i Windows | grep -Eo "Boot(.*?\*)" | grep -Eo "[0-9]{4}" || echo -1`
 
-if [ "$WINDOWS_BOOT_NUMBER" == "-1" ]; then #If Windows was not found:
+if [ "$WINDOWS_BOOT" == "-1" ]; then #If Windows was not found:
 	# Display notification.
 	notify-send -a Windows "Reboot Unsuccessful" \
 	"The Windows boot option was not found on the system."
@@ -18,8 +18,12 @@ if [ "$WINDOWS_BOOT_NUMBER" == "-1" ]; then #If Windows was not found:
 	exit 1 # Exit the program with code 1.
 fi
 
-pkexec efibootmgr -n $WINDOWS_BOOT_NUMBER # Set next boot to Windows boot,
-# with sudo permisions taken from GUI.
+NEXT_BOOT=`efibootmgr | grep BootNext | grep -Eo [0-9]{4} || echo -1`
+
+if [ "$NEXT_BOOT" != "$WINDOWS_BOOT" ]; then
+	pkexec efibootmgr -n $WINDOWS_BOOT # Set next boot to Windows boot,
+	# with sudo permisions taken from GUI.
+fi
 
 case $DESKTOP_SESSION in
 	gnome) # If user running GNOME:
