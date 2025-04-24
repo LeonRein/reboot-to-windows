@@ -32,12 +32,12 @@ case $DESKTOP_SESSION in
 		# Check for 'qdbus' command. If empty, set to -1.
 		QDBUS=`which qdbus 2>/dev/null || echo -1`
 		if [ "$QDBUS" = "-1" ]; then # If qdbus command not found:
-			reboot # Generic reboot
+			systemctl reboot # Generic reboot
 		else
 			# Show KDE Plasma reboot prompt
 			qdbus org.kde.LogoutPrompt /LogoutPrompt promptReboot
 		fi
 		;;
 	*) # If running another desktop environment:
-		reboot ;; # Generic Linux reboot command
+		systemctl reboot ;; # Generic reboot
 esac
