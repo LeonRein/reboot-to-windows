@@ -15,8 +15,8 @@ else
 	mkdir -p $ICON_LOCATION $EXECUTABLE_LOCATION $DESKTOP_FILE_DIR
 fi
 
-cp icons/reboot-to-windows.svg $ICON_LOCATION
+cp ../icons/reboot-to-windows.svg $ICON_LOCATION
 cp reboot-to-windows.sh $EXECUTABLE_LOCATION
-cp $DESKTOP_FILE $DESKTOP_FILE_LOCATION
+cp ../desktop/$DESKTOP_FILE $DESKTOP_FILE_LOCATION
 
-sh kde_check.sh
+sh ./kde_check.sh
