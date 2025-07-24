@@ -1,5 +1,5 @@
 polkit.addRule(function(action, subject) {
-    if (action.id == "org.wartybix.reboot-to-windows.wrapper" && 
+    if (action.id == "org.wartybix.reboot-to-windows.pkexec" && 
         subject.isInGroup("wheel")) {
         return polkit.Result.YES;
     }
