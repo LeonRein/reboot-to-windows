@@ -17,9 +17,9 @@ else
 	mkdir -p $ICON_LOCATION $EXECUTABLE_LOCATION $DESKTOP_FILE_DIR $(dirname $WRAPPER_LOCATION)
 fi
 
-install -Dm644 ../icons/reboot-to-windows.svg "$ICON_LOCATION/reboot-to-windows.svg"
-install -Dm755 reboot-to-windows.sh "$EXECUTABLE_LOCATION"
-install -Dm755 reboot-to-windows-pkexec.sh "$WRAPPER_LOCATION"
-install -Dm644 ../desktop/$DESKTOP_FILE "$DESKTOP_FILE_LOCATION"
+install -Dm644 icons/reboot-to-windows.svg "$ICON_LOCATION/reboot-to-windows.svg"
+install -Dm755 scripts/reboot-to-windows.sh "$EXECUTABLE_LOCATION"
+install -Dm755 scripts/reboot-to-windows-pkexec.sh "$WRAPPER_LOCATION"
+install -Dm644 desktop/$DESKTOP_FILE "$DESKTOP_FILE_LOCATION"
 
-sh ./kde_check.sh
+sh scripts/kde_check.sh
