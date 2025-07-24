@@ -1,0 +1,6 @@
+polkit.addRule(function(action, subject) {
+    if (action.id == "dev.hermann.reboot-to-windows" && 
+        subject.isInGroup("wheel")) {
+        return polkit.Result.YES;
+    }
+});

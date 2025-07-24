@@ -21,7 +21,7 @@ fi
 NEXT_BOOT=`efibootmgr | grep BootNext | grep -Eo [0-9]{4} || echo -1`
 
 if [ "$NEXT_BOOT" != "$WINDOWS_BOOT" ]; then
-	pkexec /usr/bin/reboot-to-windows set-boot $WINDOWS_BOOT # Set next boot to Windows boot
+	pkexec /usr/lib/reboot-to-windows-pkexec.sh set-boot $WINDOWS_BOOT # Set next boot to Windows boot
 fi
 
 case $DESKTOP_SESSION in
@@ -31,12 +31,12 @@ case $DESKTOP_SESSION in
 		# Check for 'qdbus' command. If empty, set to -1.
 		QDBUS=`which qdbus 2>/dev/null || echo -1`
 		if [ "$QDBUS" = "-1" ]; then # If qdbus command not found:
-			pkexec /usr/bin/reboot-to-windows reboot # Generic reboot
+			pkexec /usr/lib/reboot-to-windows-pkexec.sh reboot # Generic reboot
 		else
 			# Show KDE Plasma reboot prompt
 			qdbus org.kde.LogoutPrompt /LogoutPrompt promptReboot
 		fi
 		;;
 	*) # If running another desktop environment:
-		pkexec /usr/bin/reboot-to-windows reboot ;; # Generic reboot
+		pkexec /usr/lib/reboot-to-windows-pkexec.sh reboot ;; # Generic reboot
 esac
