@@ -24,7 +24,7 @@ cd Reboot-To-Windows/
 
 3. Inspect the source code as usual before running random scripts from the internet.
 
-3. Once happy, run the installer. To install the program locally, run `./install.sh`. To install the program for all users, run `sudo ./install.sh` (requires root permissions).
+3. Once happy, run the installer. To install the program for all users, run `sudo ./install.sh` (requires root permissions).
 
 The 'Windows' app should now be available in your desktop environment.
 
@@ -41,7 +41,6 @@ After copying the file, ensure your user account is part of the `wheel` group.
 
 #### Uninstall
 If you want to remove this program, run the uninstaller in the repository folder.
-To uninstall a local installation, run `./uninstall.sh`.
 To uninstall the program for all users, run `sudo ./uninstall.sh`.
 
 #### Updating
