@@ -34,7 +34,7 @@ For seamless, passwordless execution of `reboot-to-windows`, this program utiliz
 The Polkit rules file (`50-wartybix.reboot-to-windows.rules`) is *not* installed automatically. This file allows users in the `wheel` group to execute the `reboot-to-windows` command without requiring a password. If you wish to enable passwordless execution, you must manually copy this file to `/etc/polkit-1/rules.d/`:
 
 ```bash
-sudo cp polkit/50-wartybix.reboot-to-windows.rules /etc/polkit-1/rules.d/
+sudo cp polkit/50-wartybix.reboot-to-windows.rules /usr/share/polkit-1/rules.d/
 ```
 
 After copying the file, ensure your user account is part of the `wheel` group.

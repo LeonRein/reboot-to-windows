@@ -27,5 +27,5 @@ fi
 
 echo "**********************************************************************"
 echo "To allow wheel users to reboot to Windows without a password, copy the rules file:"
-echo "  sudo cp /usr/share/doc/reboot-to-windows-git/rules.d/50-wartybix.reboot-to-windows.rules /etc/polkit-1/rules.d/"
+echo "  sudo cp ./polkit/50-wartybix.reboot-to-windows.rules /usr/share/polkit-1/rules.d/"
 echo "**********************************************************************"
