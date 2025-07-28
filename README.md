@@ -29,15 +29,16 @@ cd Reboot-To-Windows/
 The 'Windows' app should now be available in your desktop environment.
 
 #### Polkit Configuration for Passwordless Execution
-For seamless, passwordless execution of `reboot-to-windows`, this program utilizes Polkit. When installed as root (`sudo ./install.sh`), the installer automatically places the necessary Polkit policy file (`wartybix.reboot-to-windows.policy`) in its system directory (`/usr/share/polkit-1/actions/`).
+For seamless, passwordless execution of `reboot-to-windows`, this program uses Polkit.
 
-The Polkit rules file (`50-wartybix.reboot-to-windows.rules`) is *not* installed automatically. This file allows users in the `wheel` group to execute the `reboot-to-windows` command without requiring a password. If you wish to enable passwordless execution, you must manually copy this file to `/etc/polkit-1/rules.d/`:
+The Polkit files are *not* installed automatically. These files allow users in the `wheel` group to execute the `reboot-to-windows` command without requiring a password. If you wish to enable passwordless execution, you must manually copy these files like so:
 
 ```bash
+sudo cp polkit/wartybix.reboot-to-windows.policy /usr/share/polkit-1/actions/
 sudo cp polkit/50-wartybix.reboot-to-windows.rules /usr/share/polkit-1/rules.d/
 ```
 
-After copying the file, ensure your user account is part of the `wheel` group.
+After copying the files, ensure your user account is part of the `wheel` group.
 
 #### Uninstall
 If you want to remove this program, run the uninstaller in the repository folder.

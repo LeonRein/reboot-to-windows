@@ -9,9 +9,7 @@ ICON_LOCATION=/usr/share/pixmaps/reboot-to-windows.svg
 EXECUTABLE_LOCATION=/usr/bin/reboot-to-windows
 WRAPPER_LOCATION=/usr/lib/reboot-to-windows-pkexec.sh
 DESKTOP_FILE_LOCATION=/usr/share/applications/reboot-to-windows.desktop
-POLICY_FILE_LOCATION=/usr/share/polkit-1/actions/wartybix.reboot-to-windows.policy
 
-install -Dm644 polkit/wartybix.reboot-to-windows.policy "$POLICY_FILE_LOCATION"
 install -Dm644 icons/reboot-to-windows.svg "$ICON_LOCATION"
 install -Dm755 scripts/reboot-to-windows.sh "$EXECUTABLE_LOCATION"
 install -Dm755 scripts/reboot-to-windows-pkexec.sh "$WRAPPER_LOCATION"
@@ -26,6 +24,7 @@ if [ "$DESKTOP_SESSION" = "plasma" ]; then # If user running KDE Plasma:
 fi
 
 echo "**********************************************************************"
-echo "To allow wheel users to reboot to Windows without a password, copy the rules file:"
+echo "To allow wheel users to reboot to Windows without a password, copy the polkit files:"
+echo "  sudo cp ./polkit/wartybix.reboot-to-windows.policy /usr/share/polkit-1/actions/"
 echo "  sudo cp ./polkit/50-wartybix.reboot-to-windows.rules /usr/share/polkit-1/rules.d/"
 echo "**********************************************************************"
